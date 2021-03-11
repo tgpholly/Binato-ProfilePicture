@@ -15,7 +15,7 @@ app.get("*", (req, res) => {
         default:
             // Make sure the file exists
             fs.access(`${__dirname}/ProfilePictures${req.url}.png`, (error) => {
-                global.consoleHelper.printBancho(`Profile picture [${req.url.replace("/", "")}] was requested`);
+                consoleHelper.printInfo(`Profile picture [${req.url.replace("/", "")}] was requested`);
                 // If the user does not have a pfp send the default one
                 if (error) return res.sendFile(`${__dirname}/ProfilePictures/DefaultProfilePicture.png`);
                 // User does have a profile picture, send theirs back
